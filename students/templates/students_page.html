@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>WELCOME TO STUDENTS PAGE</p>
+    <a href="{% url 'new_student' %}"> <button>add student</button></a>
+    {% if all_students %}
+        <table>
+            <th>
+                <td> First name </td>
+
+                <td> Last name </td>
+
+                <td> Middle name </td>
+
+                <td> Address </td>
+
+                <td> Course </td>
+
+                <td> Date of birth </td>
+
+                <td> age </td>
+                
+            </th>
+            {% for student in all_students %}
+                <tr>
+                    <td> {{student.first_name}} </td>
+                    <td> {{student.middle_name}} </td>
+                    <td> {{student.last_name}} </td>
+                    <td> {{student.address}} </td>
+                    <td> {{student.course}} </td>
+                    <td> {{student.date_of_birth}} </td>
+                    <td> {{student.age}} </td>
+                    <td>
+                        <a href="{% url 'update_student' student.id %}"><button>Update student</button></a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete_student' student.id %}"><button>delete student</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
+        </table>
+        {% endif %}
+</body>
+</html>
